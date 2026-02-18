@@ -1,12 +1,12 @@
 import cv2
 from ultralytics import YOLO
 
-# ---------------- SETTINGS ----------------
 
-model = YOLO("yolov8m.pt")  # medium model
+
+model = YOLO("yolov8m.pt")  
 CONF_THRESHOLD = 0.7
 
-# Class → Bin mapping
+
 WASTE_MAP = {
     "bottle": ("GLASS BIN", (0, 255, 0)),
     "wine glass": ("GLASS BIN", (0, 255, 0)),
@@ -17,7 +17,7 @@ WASTE_MAP = {
 
 cap = cv2.VideoCapture(0)
 
-# ------------------------------------------
+
 
 while True:
     ret, frame = cap.read()
@@ -51,7 +51,7 @@ while True:
                             recommendation_color,
                             2)
 
-    # Top panel
+    
     cv2.rectangle(frame, (0, 0), (frame.shape[1], 120), (0, 0, 0), -1)
 
     cv2.putText(frame,
@@ -78,3 +78,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
